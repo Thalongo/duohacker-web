@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUOHACKER</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+        :root {
+            --neon-green: #00ff9d;
+            --neon-purple: #9d00ff;
+            --dark: #0a0a0a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #1a0033 0%, #000000 100%);
+            color: white;
+            font-family: 'VT323', monospace;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .warning-text {
+            color: #ffcc00;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px #ffcc00;
+            letter-spacing: 2px;
+            opacity: 0;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+
+        #duolingo {
+            width: 280px;
+            height: 280px;
+            position: absolute;
+            top: -600px;
+            filter: drop-shadow(0 0 40px var(--neon-green));
+        }
+
+        .title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 5.2rem;
+            letter-spacing: 8px;
+            background: linear-gradient(90deg, #00ff9d, #9d00ff, #00ff9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(0, 255, 157, 0.8);
+            margin-bottom: 30px;
+            opacity: 0;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 25px;
+            margin-top: 30px;
+            opacity: 0;
+        }
+
+        .btn {
+            padding: 18px 42px;
+            font-size: 1.8rem;
+            font-family: 'Press Start 2P', cursive;
+            border: 4px solid var(--neon-green);
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-transform: uppercase;
+            box-shadow: 0 0 30px var(--neon-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: var(--neon-green);
+            color: black;
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 0 60px var(--neon-green);
+        }
+
+        .btn.discord {
+            border-color: #7289da;
+            box-shadow: 0 0 30px #7289da;
+        }
+
+        .btn.discord:hover {
+            background: #7289da;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 30px;
+            font-size: 1rem;
+            opacity: 0.7;
+            z-index: 10;
+        }
+
+        .scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 255, 157, 0.03) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            animation: scan 4s linear infinite;
+            z-index: 3;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .glow {
+            animation: glow-pulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow-pulse {
+            from { text-shadow: 0 0 20px var(--neon-green); }
+            to { text-shadow: 0 0 60px var(--neon-green), 0 0 80px var(--neon-purple); }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="scanline"></div>
+
+    <div class="content">
+        <p class="warning-text">đây là trang phụ, vui lòng chuyển đến <strong>duohacker.io.vn</strong></p>
+        
+        <div class="logo-container">
+            <img id="duolingo" src="https://assets.duolingo.com/avatars/owls/1.svg" alt="Duolingo">
+        </div>
+        
+        <h1 class="title glow">DUOHACKER</h1>
+        
+        <div class="buttons">
+            <button onclick="window.open('https://greasyfork.org/vi/scripts/561041-duolingo-duohacker', '_blank')" class="btn">
+                TẢI NGAY
+            </button>
+            <button onclick="window.open('https://discord.com/invite/VjxjT47UFv', '_blank')" class="btn discord">
+                DISCORD
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        Bản quyền © 2026 2pixel — Không liên kết với Duolingo, Inc.
+    </footer>
+
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#00ff9d", "#9d00ff", "#ffffff"] },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.6, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00ff9d", "opacity": 0.3, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "repulse" }, "resize": true }
+            },
+            "retina_detect": true
+        });
+
+        const tl = gsap.timeline();
+
+        tl.to("#duolingo", { y: 420, duration: 2.2, ease: "bounce.out", delay: 0.6 })
+          .to("#duolingo", { rotation: -15, duration: 0.4, yoyo: true, repeat: 3 })
+          .to(".warning-text", { opacity: 1, y: 10, duration: 1, ease: "power3.out" })
+          .to(".title", { opacity: 1, y: -20, duration: 1, ease: "power4.out" })
+          .to(".buttons", { opacity: 1, y: -30, duration: 1, stagger: 0.2, ease: "power3.out" });
+
+        const owl = document.getElementById('duolingo');
+        owl.addEventListener('mouseenter', () => gsap.to(owl, { scale: 1.15, rotation: 8, duration: 0.4 }));
+        owl.addEventListener('mouseleave', () => gsap.to(owl, { scale: 1, rotation: 0, duration: 0.6 }));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'r' || e.key === 'R') tl.restart();
+        });
+    </script>
+</body>
+</html>
